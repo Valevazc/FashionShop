@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<a href="carrito.html" class="volver">← Volver al carrito</a>
+<link rel="stylesheet" href="../style.css">
+<title>FashionShop - Confirmar compra</title>
+</head>
+<body style="background-color: whitesmoke;">
+
+
+<h1>Confirma tu compra</h1>
+
+
+<h2>Ingresa tus datos</h2>
+
+<div>
+	<section class="registroComprador">
+	<label for="nombreUsuario">Nombre y apellido:</label>
+	<input type="text" id="nombreUsuario" placeholder="Ej: Pedro Rodriguez" required><br><br>
+	
+	<label for="fechaDePago">Fecha de pago:</label>
+   <input id="fechaDePago" type="date" required>
+	<br>
+
+	 
+   
+   </div>
+	
+<h3>Método de entrega</h3>
+
+<div>
+	<section class="entregaRetiro">
+	<label for="entregaRetiro">Retirar en el local <strong style="color:green">GRATIS</strong></label>
+	<input type="radio" id="entregaRetiro">
+	<p>Franklin D. Roosevelt 458, 70000 Colonia del Sacramento, Departamento de Colonia</p>
+	</section><br>
+
+	<section class="entregaDelivery">
+	<label for="entregaDelivery">Enviar a domicilio <strong>+ $50</strong></label>
+	<input type="radio" id="entregaDelivery"><br><br>
+	<input type="text" id="domicilio" name="domicilio" placeholder="ingresa tu direccion"><br><br>
+	
+		<section class="metodoDePago">
+		<label for="metodoDePago">Medio de Pago:</label><br>
+		<select id="metodoDePago" name="metodoDePago">
+        <option value="">-- Selecciona una opción --</option>
+        <option value="efectivo">Efectivo</option>
+        <option value="debito">Tarjeta de Débito (Aplica descuento IVA del 2%)</option>
+        <option value="credito">Tarjeta de Crédito</option>
+		</select>
+		</section>
+			
+	</section><br>
+	
+	<button type="button" onclick="realizarCompra()">CONFIRMAR</button>
+	
+</div>
+
+
+ <script src="../scripts/registroCompra.js"></script>
+</body>
+</html>

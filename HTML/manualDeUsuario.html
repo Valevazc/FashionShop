@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>FashionShop - Manual de usuario</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<a href="../index.html">Volver a la página principal</a>
+
+<h1>Manual de usuario</h1>
+
+<h2>ÍNDICE</h2>
+
+<ul>
+<li><a href="#introduccion">Introducción</a></li>
+<li><a href="#manual-cliente">Manual de cliente</a></li>
+<li><a href="#manual-administrador">Manual de administrador</a></li>
+</ul>
+
+<br><br>
+
+<h2 id="introduccion">INTRODUCCIÓN</h2>
+
+<p>El objetivo de esta sección es proporcionar a detalle el funcionamiento de la página web, brindando una guía que 
+facilite el uso del sistema, explicando paso a paso las acciones que pueden realizar tanto los usuarios como el administrador.</p>
+
+<br><br>
+
+<h2 id="manual-cliente">SECCIÓN USUARIOS</h2>
+<p>Al ingresar al sitio web, no será necesario inicio de sesión previo siendo cliente.</p>
+<img src="imgmanual/paginaprincipal.jpg">
+<p>Página principal de la tienda</p>
+
+
+<h3>Opciones dentro de la sección cliente</h3>
+<ul>
+<li>Al recorrer la página podrá visualizar las categorías por género, haciendo clic en el botón de la categoría a la cual se
+ desea acceder la página automáticamente le llevará a la opción seleccionada, donde se podrán visualizar los productos con imagen
+ de referencia, precio, stock y la opción para seleccionar cuánta cantidad desea comprar.</li>
+<li>
+<img src="imgmanual/categorias.jpg">
+<p>Categorías de la tienda</p>
+</li>
+<li><strong>Si la cantidad seleccionada supera el valor del stock, la página mostrará una alerta de "no hay suficiente stock de tal artículo".</strong></li>
+<li>Otra opción de búsqueda sería por producto, donde se encuentra una barra de búsqueda para filtrar el producto que se esté buscando, ya sea una campera, un pantalón, un buzo, etc.</li>
+<li>En cada producto que desee adquirir encontrará para marcar una opción "agregar al carrito" con la que automáticamente guardará ese producto en el carrito.</li>
+<li>En la parte inferior de la página hay dos botones: uno para visualizar el carrito y otro para volver a la parte superior de la página.</li>
+</ul>
+
+<h3>CARRITO (SECCIÓN CLIENTES)</h3>
+<p>Cuando decida que ya no quiere agregar más productos a su compra, podrá visualizar varias cosas dentro de la opción "ver carrito".</p>
+<img src="imgmanual/carrito.jpg">
+<p>Página del carrito</p>
+<ul>
+<li>Los productos o el producto que seleccionó</li>
+<li>Un botón para quitar ese producto del carrito</li>
+<li>Opción de actualizar el carrito si agregó o modificó las cantidades</li>
+<li>Detalles del subtotal + IVA.  <strong>La página avisa que con tarjeta de débito se le podrá hacer un pequeño descuento.</strong></li>
+</ul>
+
+<h3>Confirmación de compra</h3>
+<p>Para dar por finalizada su compra (en el botón finalizar compra), deberá:</p>
+<img src="imgmanual/finalizarcompra.jpg">
+<p>Página de finalizar compra</p>
+<ol>
+<li>Llenar un formulario nombre y apellido + fecha en la que se realizó la compra</li>
+<li>Seleccionar un método de entrega del cual dependerá si se le cobra o no</li>
+<li>Ingresar su dirección en caso de querer que su pedido llegue a su domicilio</li>
+<li>Para finalizar elija el método de pago con el cual va a realizar su compra y presione en finalizar compra</li>
+<li><strong>La página le enviará una alerta de confirmación de compra, con el total a pagar. El carrito se va a vaciar automáticamente</strong></li>
+</ol>
+
+<br><br>
+
+<h2 id="manual-administrador">SECCIÓN ADMINISTRADOR</h2>
+<p>El administrador al ingresar a la página principal como cualquier usuario, podrá dirigirse al apartado administrativo desde
+ la opción admin arriba a la izquierda, donde deberá ingresar usuario y contraseña correctos e iniciar sesión.</p>
+<img src="imgmanual/admnistrador.jpg">
+<p>Página del administrador</p>
+<p><strong>Si el usuario y contraseña son incorrectos la página automáticamente mandará una alerta de "usuario o contraseña incorrectos".</strong></p>
+
+<h3>Opciones dentro de la sección administrador</h3>
+<ul>
+<li>Con el botón "Registrar +", como administrador podrá registrar productos con campos obligatorios: 
+nombre del producto, sección género, precio, enlace de la imagen relacionada al producto, y stock.
+ Al darle guardar y publicar, se agregará a la página principal donde el cliente podrá verlo. Además de mostrarse en la misma 
+ página de Gestion Admin para que si lo desea, pueda modificarlo u eliminarlo. <strong>Si alguno de los campos está vacío, 
+ la página mostrará una alerta de "debe completar todos los campos".</strong></li>
+<li>Actualizar stock de cualquier producto: En la página del admin, se puede actualizar el stock a los productos ya 
+registrados, escibiendo el nuevo número y clickeando en el botón "cargar stock", se actualizará automáticamente.
+ <strong style="color: green;">El usuario visualizará esos cambios en la página principal de la tienda.</strong></li>
+<li>El admin también podrá eliminar productos de la tienda, simplemente situándose en el producto que desea quitar y dándole 
+al botón eliminar producto. <strong>No hay retroceso ante esta acción.</strong></li>
+<li>Por último, el administrador puede ver el historial de venta, con los datos de los clientes.
+<strong style="color: green;">El administrador también podrá limpiar el historial de ventas, con el botón debajo de las ventas realizadas.</strong></li>
+</ul>
+
+<h3>Referencias fotográficas de las opciones del administrador</h3>
+<p>Sección para agregar productos</p>
+<img src="imgmanual/agregarproducto.jpg">
+<p>Sección para eliminar productos y cargar stock</p>
+<img src="imgmanual/eliminarproducto.jpg">
+<p>Sección ver y eliminar historial</p>
+<img src="imgmanual/historial.jpg">
+<br><br>
+
+<a href="../index.html">Volver a la página principal</a>
+</body>
+</html>

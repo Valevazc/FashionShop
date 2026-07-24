@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../style.css">
+<title>FashionShop - Gestión</title>
+</head>
+<a href="../index.html" class="volver">← Volver a la tienda</a>
+<body>
+
+
+<header>
+<h1>Gestión de administrador</h1>
+</header>
+
+
+<div class="abrirNuevoRegistro">
+<button type="button" id="btnRegistrar">Registrar +</button>
+</div>
+
+
+<div id="registrar" class="registrar">
+<form>		
+	<h2>Registrar mercaderia</h2><br>
+
+	<section class="nombreProducto">
+		<label for="nombreProducto">Nombre:</label>
+		<input type="text" id="nombreProducto" name="nombreProducto" placeholder="Ej: Campera de cuero"><br>			
+	</section><br>
+	
+	<section class="seccionProducto">
+		<label for="seccionProducto">Sección:</label>
+		<select id="seccionProducto">
+		<option>Mujeres</option>
+		<option>Hombres</option>
+		<option>chicos</option>
+		</select>		
+	</section><br>
+	
+	<section class="precioProducto">
+		<label for="precioProducto">Precio:</label>
+		<input type="number" id="precioProducto" name="precioProducto" placeholder="Ej: $2000"><br>			
+	</section><br>
+	
+	<section class="imgProducto">
+		<label for="imgProducto">Ruta de la imágen:</label>
+		<input type="text" id="imgProducto" name="imgProducto" placeholder="Direccion de imagen"><br>			
+	</section><br>
+	
+	<section class="stockProducto">
+		<label for="stockProducto">Stock disponible:</label>
+		<input type="number" id="stockProducto" name="stockProducto" placeholder="Ej: 5"><br>			
+	</section><br>
+	
+	<button type="button" id="guardarProducto">Guardar y publicar</button>
+</form>
+</div><br><br>
+
+
+<div class="productosYaRegistrados">
+	<h2 style="color:Gray">Productos registrados</h2><br>
+	
+	<h2  id="seccion-mujeres">Mujeres</h2>
+		<div id="productosMujeres" style="width: 100%; border: 1px solid #ccc;">No has registrado nada aun</div>
+		<br>
+		
+		<h2  id="seccion-hombres">Hombres</h2>
+		<div id="productosHombres" style="width: 100%; border: 1px solid #ccc;">No has registrado nada aun</div>
+		<br>
+			
+	
+		<h2  id="seccion-chicos">Chicos</h2>
+		<div id="productoschicos" style="width: 100%; border: 1px solid #ccc;">No has registrado nada aun</div>
+		<br>
+	
+		
+</div><br>
+
+<div class="ventasRealizadas">
+    <h2>Ventas realizadas</h2>
+    <div id="listaVentas"></div><br>
+	<button onclick="eliminarVentas()">Limpiar historial de ventas</button><br><br>
+</div>
+
+
+
+<a href="../index.html">Cerrar sesión</a>
+
+
+<script src="../scripts/gestionAdmin.js"></script>
+</html>

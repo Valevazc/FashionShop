@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<title>FashionShop</title>
+</head>
+
+<body>
+
+<header>
+		
+		<h1>FashionShop</h1><br>
+		<p style="color: gray; font-weight: bold; font-size: 18px;">Bienvenido/a FashionShop!</p>
+		
+		<div class="seccion" align="left">
+		<div class="LoginAdmin">
+		<a href="HTML/loginAdmin.html">Admin</a>
+		</div><br>
+		<div class="manualDeUsuario">
+		<a href="HTML/manualDeUsuario.html">Ayuda</a>
+		</div>
+		</div><br><br>
+		
+		<center>
+		<img src="HTML/img/fondoIndex.png" width="500" height="400" style="border-radius: 15px; #000000;"><br>
+		<h2 style="color:#E6E6FA">LLevate la prenda que quieras a un precio increible.</h2><br>
+		</center>
+		
+		
+</header><br><br>
+<div id="volver">
+<div class="secciones" align="left">
+<h2>Secciones</h2>
+	<a href="#seccion-chicos"><button type="button">Chicos</button></a><br><br>
+	<a href="#seccion-hombres"><button type="button">Hombres</button></a><br><br>
+	<a href="#seccion-mujeres"><button type="button">Mujeres</button><br></a>
+	<br><br>
+</div>
+</div>
+		
+		<div>
+		<input type="text" id="inputbuscar" placeholder="Buscar producto">
+		<button type="button" onclick="filtrarProductos()">Buscar</button>
+		</div>
+		
+		<h2 id="seccion-mujeres">Mujeres</h2>
+		<div id="productosMujeres"></div>
+		<br>
+		
+		<h2 id="seccion-hombres">Hombres</h2>
+		<div id="productosHombres"></div>
+		<br>
+	
+		<h2 id="seccion-chicos">Chicos</h2>
+		<div id="productoschicos"></div>
+		<br>
+		
+		<p id="resultado"></p><br>
+
+<div class="volver">
+	<a href="#volver"><button type="button">Volver al inicio</button></a>
+</div>
+<br><br>
+	
+	<a href="HTML/carrito.html"><button type="button" onclick="agregarAlCarrito()" id="verBoton"><strong>Ver carrito</strong></button></a>
+
+
+<script src="scripts/index.js"></script>
+</body>
+</html>
