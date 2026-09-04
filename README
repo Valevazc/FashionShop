@@ -1,47 +1,104 @@
-FashionShop - Ecommerce simple
+# FashionShop - Ecommerce
 
 Proyecto de ecommerce simple, pensado para una tienda de ropa.
+Objetivo principal: separar funcionalidades entre admin y usuario (cliente).
+Estilo visual armado con Bootstrap 5.3.
 
-Objetivo principal: Separar funcionalidades entre admin y usuario (cliente).
+## ADMIN
 
-ADMIN: 
--Puede iniciar sesión con credenciales ya establecidas. 
--Tiene acceso a gestionAdmin.html, donde puede registrar un producto 
-y que el cliente lo vea en la página principal (index.html). 
--Puede eliminar productos ya registrados o modificar stock de los mismos.
--Puede ver un historial de las ventas registradas y eliminarlo si lo desea.
-		   
-USUARIO: 
--Ve los productos registrados por el admin en la página principal.
--Puede agregar los productos al carrito, indicando la cantidad que desea.
--Puede ver el carrito de compras, donde aparecen los productos que agregó anteriormente.
--Si asi lo desea, puede modificar la cantidad del producto desde el carrito, como 
-también quitarlo. 
--Puede confirmar la compra desde el carrito, registrar sus datos y preferencias de entrega.
--Finalmente, si confirma sus datos le aparece el total de compra con los detalles del IVA y la suma
-del envio si asi lo requiere, y sus datos son guardados para el registro de ventas de gestionAdmin.
-			 
+- Puede iniciar sesión con credenciales ya establecidas.
+- Tiene acceso a gestionAdmin.html, donde puede registrar un producto (nombre,
+  sección, precio, stock y la URL de una imagen, por ejemplo, copiada de una imágen de google) 
+  y que el cliente lo vea en la página principal (index.html).
+- Puede eliminar productos ya registrados o modificar el stock de los mismos.
+- Puede ver un historial de las ventas registradas (con cliente, fecha,
+  método de pago, método de entrega y el desglose de subtotal, descuento,
+  IVA y total) y eliminarlo si lo desea.
 
- Estructura principal
+## USUARIO
 
-- index.html: Página principal de la tienda donde se pueden ver y agregar productos al carrito.
-- loginAdmin.html: Inicio de sesion de admin.
-- gestionAdmin.html: Registro y modificacion de productos. Ventas registradas.
-- carrito.html: Ver productos agregados por el usuario. Modificar su cantidad o quitarlos. Ver subtotal + IVA. Confirmar para registrar datos.
-- registroCompra.html: Registrar datos del cliente, método de pago y opción de delivery con costo extra. Confirmar compra y guardar datos.
+- Ve los productos registrados por el admin en la página principal, con un
+  carrusel de fotos destacadas arriba de todo y un buscador para filtrar
+  por nombre.
+- Puede agregar productos al carrito indicando la cantidad que desea, de
+  dos formas: tildando "Agregar al carrito" y confirmando desde el botón
+  "Ver carrito", o apretando "Comprar ahora" en el producto (lo agrega y
+  te lleva directo al carrito).
+- Puede ver el carrito de compras, donde aparecen los productos que agregó
+  anteriormente, con el subtotal, el IVA (22%, fijo) y el total.
+- Si paga con débito, se le aplica un 10% de descuento sobre el subtotal
+  antes de calcular el IVA.
+- Si así lo desea, puede modificar la cantidad de un producto desde el
+  carrito, como también quitarlo (el stock se devuelve automáticamente al
+  catálogo al quitarlo).
+- Puede confirmar la compra desde el carrito, registrar sus datos
+  (nombre, fecha), elegir método de entrega (retirar en el local, gratis,
+  o envío a domicilio, con costo extra) y método de pago.
+- Finalmente, al confirmar sus datos le aparece el total de la compra con
+  el detalle del subtotal, descuento (si corresponde), IVA y el costo de
+  envío si así lo requirió. Sus datos quedan guardados en el historial de
+  ventas de gestionAdmin, y el carrito se vacía automáticamente.
 
-JavaScript
-- index.js: Muestra los productos, filtra por búsqueda y agrega al carrito.
-- loginAdmin.js: Valida las credenciales y redirige a gestionAdmin.
-- gestionAdmin.js: Registra, elimina y edita stock de productos. Muestra historial de ventas.
-- carrito.js: Muestra el carrito, actualiza cantidades, elimina productos y calcula el total con IVA.
-- registroCompra.js: Valida los datos, descuenta stock, calcula IVA y delivery, y guarda la venta.
+## Estructura principal
 
-Credenciales de admin
-- Usuario: admin
-- Contraseña: admin
+- **index.html**: página principal de la tienda. Carrusel de fotos,
+  buscador, secciones por categoría, y los productos con opción de
+  agregarlos al carrito o comprarlos directamente.
+- **HTML/loginAdmin.html**: inicio de sesión de admin.
+- **HTML/gestionAdmin.html**: registro, edición y eliminación de
+  productos. Historial de ventas.
+- **HTML/carrito.html**: ver productos agregados por el usuario, modificar
+  su cantidad o quitarlos, elegir método de pago, ver subtotal + descuento
+  + IVA, y confirmar para pasar a registrar los datos.
+- **HTML/registroCompra.html**: registrar datos del cliente, método de
+  entrega (con costo extra si es a domicilio) y método de pago. Confirmar
+  compra y guardar la venta.
+- **HTML/manualDeUsuario.html**: guía de uso para clientes y para el admin.
 
-Cómo usar
-1. Abrir index.html en el navegador
-2. Para agregar productos, iniciar sesión como admin desde el link "Admin" en el header
-3. Una vez registrados los productos, el cliente puede verlos en index.html y agregarlos al carrito
+## JavaScript
+
+- **scripts/productos.js**: compartido entre index.js y gestionAdmin.js.
+  Crea los productos de ejemplo, maneja las versiones de los datos
+  guardados (para que el catálogo se reinicie solo si cambia el formato
+  de los datos) y verifica la ruta de cada imagen (archivo local de los
+  ejemplos vs. URL completa cargada por el admin).
+- **scripts/calculosCarrito.js**: compartido entre carrito.js y
+  registroCompra.js. Calcula subtotal, descuento por método de pago e IVA
+  en un solo lugar, para que los dos archivos siempre muestren el mismo
+  número.
+- **scripts/index.js**: muestra los productos, filtra por búsqueda, agrega
+  al carrito y maneja la compra directa ("Comprar ahora").
+- **scripts/loginAdmin.js**: valida las credenciales y redirige a
+  gestionAdmin.
+- **scripts/gestionAdmin.js**: registra, elimina y edita el stock de
+  productos. Muestra el historial de ventas.
+- **scripts/carrito.js**: muestra el carrito, actualiza cantidades,
+  elimina productos (devolviendo el stock) y calcula el total según el
+  método de pago elegido.
+- **scripts/registroCompra.js**: valida los datos del formulario, calcula
+  el total (con descuento, IVA y delivery) y guarda la venta. El stock ya
+  se descuenta antes, al agregar el producto al carrito.
+
+## Carpetas
+
+- **img/**: carpeta única de imágenes de producto, en la raíz del
+  proyecto. Ahí van las fotos de los 5 productos de ejemplo y el logo.
+  Los productos que carga el admin usan una URL externa en vez de un
+  archivo acá.
+- **HTML/imgmanual/**: capturas de pantalla usadas en el manual de
+  usuario.
+- **scripts/**: todos los archivos JavaScript del proyecto.
+
+## Credenciales de admin
+
+- Usuario: `admin`
+- Contraseña: `admin`
+
+## Cómo usar
+
+1. Abrir `index.html` en el navegador.
+2. Para agregar productos, iniciar sesión como admin desde el botón
+   "Admin" en la barra superior.
+3. Una vez registrados los productos, cualquier cliente puede verlos en
+   `index.html`, agregarlos al carrito (o comprarlos directamente) y
+   confirmar la compra.

@@ -2,110 +2,190 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FashionShop - Manual de usuario</title>
-<link rel="stylesheet" href="../style.css">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
 
-<a href="../index.html">Volver a la página principal</a>
+<body class="bg-light">
 
-<h1>Manual de usuario</h1>
+<header class="bg-dark text-white py-4 mb-4">
+	<div class="container d-flex justify-content-between align-items-center">
+		<a href="../index.html" class="btn btn-outline-light btn-sm">← Volver a la tienda</a>
+		<h1 class="h3 mb-0">Manual de usuario</h1>
+		<span style="width: 160px;"></span> 
+	</div>
+</header>
 
-<h2>ÍNDICE</h2>
+<div class="container mb-5" style="max-width: 900px;">
 
-<ul>
-<li><a href="#introduccion">Introducción</a></li>
-<li><a href="#manual-cliente">Manual de cliente</a></li>
-<li><a href="#manual-administrador">Manual de administrador</a></li>
-</ul>
+	<!-- Introducción -->
+	<div class="card shadow-sm p-4 mb-4">
+		<h2 id="introduccion" class="h4 mb-3">Introducción</h2>
+		<p class="mb-0">Esta guía explica paso a paso cómo usar FashionShop, tanto para quienes compran en la tienda
+		como para el administrador que gestiona los productos y las ventas.</p>
+	</div>
 
-<br><br>
+	<!-- Índice -->
+	<div class="card shadow-sm p-4 mb-4">
+		<h2 class="h5 mb-3">Índice</h2>
+		<div class="list-group">
+			<a href="#manual-cliente" class="list-group-item list-group-item-action">
+				Manual de cliente
+			</a>
+			<a href="#carrito" class="list-group-item list-group-item-action">
+				Carrito de compras
+			</a>
+			<a href="#confirmar-compra" class="list-group-item list-group-item-action">
+				Confirmación de compra
+			</a>
+			<a href="#manual-administrador" class="list-group-item list-group-item-action">
+				Manual de administrador
+			</a>
+		</div>
+	</div>
 
-<h2 id="introduccion">INTRODUCCIÓN</h2>
+	<!-- SECCIÓN CLIENTE -->
+	<div class="card shadow-sm p-4 mb-4">
+		<h2 id="manual-cliente" class="h4 mb-3">Sección clientes</h2>
+		<p>Para navegar y comprar en FashionShop <strong>no hace falta iniciar sesión</strong>: cualquier
+		visitante puede recorrer el catálogo, agregar productos al carrito y finalizar una compra.</p>
 
-<p>El objetivo de esta sección es proporcionar a detalle el funcionamiento de la página web, brindando una guía que 
-facilite el uso del sistema, explicando paso a paso las acciones que pueden realizar tanto los usuarios como el administrador.</p>
+		<img src="imgmanual/paginaprincipal.jpg" class="img-fluid rounded-3 shadow-sm my-3" alt="Página principal de la tienda">
+		<p class="text-muted small text-center mb-4">Página principal, con el carrusel de fotos y el buscador</p>
 
-<br><br>
+		<h3 class="h6 fw-bold">Cómo encontrar productos</h3>
+		<ul>
+			<li>Arriba de todo hay un <strong>carrusel</strong> de fotos que va rotando solo, mostrando prendas destacadas.</li>
+			<li>Debajo, los botones de <strong>Mujeres / Hombres / Chicos</strong> te llevan directo a esa sección del catálogo.</li>
+			<li>El <strong>buscador</strong> filtra los productos por nombre a medida que escribís y apretás "Buscar".</li>
+		</ul>
 
-<h2 id="manual-cliente">SECCIÓN USUARIOS</h2>
-<p>Al ingresar al sitio web, no será necesario inicio de sesión previo siendo cliente.</p>
-<img src="imgmanual/paginaprincipal.jpg">
-<p>Página principal de la tienda</p>
+		<img src="imgmanual/categorias.jpg" class="img-fluid rounded-3 shadow-sm my-3" alt="Categorías y buscador de la tienda">
+		<p class="text-muted small text-center mb-4">Secciones por categoría y buscador de productos</p>
 
+		<h3 class="h6 fw-bold">Comprar un producto</h3>
+		<p>Cada producto muestra su foto, nombre, precio y stock disponible. Tenés <strong>dos formas</strong> de comprarlo:</p>
+		<ul>
+			<li>Elegís la <strong>cantidad</strong>, tildás <strong>"Agregar al carrito"</strong>, y después apretás el botón
+			"Ver carrito" al final de la página para juntar todo lo que agregaste.</li>
+			<li>O apretás directamente <strong>"Comprar ahora"</strong> en ese mismo producto: te agrega solo ese producto
+			al carrito y te lleva directo a la página del carrito, sin tener que buscar el botón de abajo.</li>
+		</ul>
 
-<h3>Opciones dentro de la sección cliente</h3>
-<ul>
-<li>Al recorrer la página podrá visualizar las categorías por género, haciendo clic en el botón de la categoría a la cual se
- desea acceder la página automáticamente le llevará a la opción seleccionada, donde se podrán visualizar los productos con imagen
- de referencia, precio, stock y la opción para seleccionar cuánta cantidad desea comprar.</li>
-<li>
-<img src="imgmanual/categorias.jpg">
-<p>Categorías de la tienda</p>
-</li>
-<li><strong>Si la cantidad seleccionada supera el valor del stock, la página mostrará una alerta de "no hay suficiente stock de tal artículo".</strong></li>
-<li>Otra opción de búsqueda sería por producto, donde se encuentra una barra de búsqueda para filtrar el producto que se esté buscando, ya sea una campera, un pantalón, un buzo, etc.</li>
-<li>En cada producto que desee adquirir encontrará para marcar una opción "agregar al carrito" con la que automáticamente guardará ese producto en el carrito.</li>
-<li>En la parte inferior de la página hay dos botones: uno para visualizar el carrito y otro para volver a la parte superior de la página.</li>
-</ul>
+		<div class="alert alert-warning">
+			Si la cantidad que pedís supera el stock disponible, la página va a mostrar una alerta avisando
+			que no hay suficiente stock de ese producto.
+		</div>
 
-<h3>CARRITO (SECCIÓN CLIENTES)</h3>
-<p>Cuando decida que ya no quiere agregar más productos a su compra, podrá visualizar varias cosas dentro de la opción "ver carrito".</p>
-<img src="imgmanual/carrito.jpg">
-<p>Página del carrito</p>
-<ul>
-<li>Los productos o el producto que seleccionó</li>
-<li>Un botón para quitar ese producto del carrito</li>
-<li>Opción de actualizar el carrito si agregó o modificó las cantidades</li>
-<li>Detalles del subtotal + IVA.  <strong>La página avisa que con tarjeta de débito se le podrá hacer un pequeño descuento.</strong></li>
-</ul>
+		<img src="imgmanual/productodetalle.jpg" class="img-fluid rounded-3 shadow-sm my-3" alt="Tarjeta de un producto con sus opciones de compra">
+		<p class="text-muted small text-center mb-0">Opciones de compra dentro de cada producto</p>
+	</div>
 
-<h3>Confirmación de compra</h3>
-<p>Para dar por finalizada su compra (en el botón finalizar compra), deberá:</p>
-<img src="imgmanual/finalizarcompra.jpg">
-<p>Página de finalizar compra</p>
-<ol>
-<li>Llenar un formulario nombre y apellido + fecha en la que se realizó la compra</li>
-<li>Seleccionar un método de entrega del cual dependerá si se le cobra o no</li>
-<li>Ingresar su dirección en caso de querer que su pedido llegue a su domicilio</li>
-<li>Para finalizar elija el método de pago con el cual va a realizar su compra y presione en finalizar compra</li>
-<li><strong>La página le enviará una alerta de confirmación de compra, con el total a pagar. El carrito se va a vaciar automáticamente</strong></li>
-</ol>
+	<!-- CARRITO -->
+	<div class="card shadow-sm p-4 mb-4">
+		<h2 id="carrito" class="h4 mb-3">Carrito de compras</h2>
+		<p>En la página del carrito vas a encontrar todo lo que agregaste, con estas opciones:</p>
 
-<br><br>
+		<img src="imgmanual/carrito.jpg" class="img-fluid rounded-3 shadow-sm my-3" alt="Página del carrito">
+		<p class="text-muted small text-center mb-4">Vista del carrito</p>
 
-<h2 id="manual-administrador">SECCIÓN ADMINISTRADOR</h2>
-<p>El administrador al ingresar a la página principal como cualquier usuario, podrá dirigirse al apartado administrativo desde
- la opción admin arriba a la izquierda, donde deberá ingresar usuario y contraseña correctos e iniciar sesión.</p>
-<img src="imgmanual/admnistrador.jpg">
-<p>Página del administrador</p>
-<p><strong>Si el usuario y contraseña son incorrectos la página automáticamente mandará una alerta de "usuario o contraseña incorrectos".</strong></p>
+		<ul>
+			<li>Los productos que agregaste, con foto, precio y la <strong>cantidad</strong> (editable).</li>
+			<li>Un botón <strong>"Quitar del carrito"</strong> por producto.</li>
+			<li>El botón <strong>"Actualizar carrito"</strong>, para que se guarden los cambios si modificaste alguna cantidad.</li>
+			<li>Un selector de <strong>método de pago</strong>: <em>Efectivo / Crédito</em> o <em>Débito</em>.</li>
+		</ul>
 
-<h3>Opciones dentro de la sección administrador</h3>
-<ul>
-<li>Con el botón "Registrar +", como administrador podrá registrar productos con campos obligatorios: 
-nombre del producto, sección género, precio, enlace de la imagen relacionada al producto, y stock.
- Al darle guardar y publicar, se agregará a la página principal donde el cliente podrá verlo. Además de mostrarse en la misma 
- página de Gestion Admin para que si lo desea, pueda modificarlo u eliminarlo. <strong>Si alguno de los campos está vacío, 
- la página mostrará una alerta de "debe completar todos los campos".</strong></li>
-<li>Actualizar stock de cualquier producto: En la página del admin, se puede actualizar el stock a los productos ya 
-registrados, escibiendo el nuevo número y clickeando en el botón "cargar stock", se actualizará automáticamente.
- <strong style="color: green;">El usuario visualizará esos cambios en la página principal de la tienda.</strong></li>
-<li>El admin también podrá eliminar productos de la tienda, simplemente situándose en el producto que desea quitar y dándole 
-al botón eliminar producto. <strong>No hay retroceso ante esta acción.</strong></li>
-<li>Por último, el administrador puede ver el historial de venta, con los datos de los clientes.
-<strong style="color: green;">El administrador también podrá limpiar el historial de ventas, con el botón debajo de las ventas realizadas.</strong></li>
-</ul>
+		<div class="alert alert-info">
+			Si elegís <strong>Débito</strong>, se aplica un <strong>10% de descuento</strong> sobre el subtotal antes
+			de calcular el IVA (22%, fijo). El total se recalcula solo al cambiar el método de pago.
+		</div>
 
-<h3>Referencias fotográficas de las opciones del administrador</h3>
-<p>Sección para agregar productos</p>
-<img src="imgmanual/agregarproducto.jpg">
-<p>Sección para eliminar productos y cargar stock</p>
-<img src="imgmanual/eliminarproducto.jpg">
-<p>Sección ver y eliminar historial</p>
-<img src="imgmanual/historial.jpg">
-<br><br>
+		<p class="mb-0">Cuando estés conforme con tu compra, el botón <strong>"Confirmar compra"</strong> te lleva
+		al formulario final.</p>
+	</div>
 
-<a href="../index.html">Volver a la página principal</a>
+	<!-- CONFIRMACIÓN DE COMPRA -->
+	<div class="card shadow-sm p-4 mb-4">
+		<h2 id="confirmar-compra" class="h4 mb-3">Confirmación de compra</h2>
+		<p>Para terminar la compra vas a completar un formulario con estos pasos:</p>
+
+		<img src="imgmanual/confirmarcompra.jpg" class="img-fluid rounded-3 shadow-sm my-3" alt="Página de confirmación de compra">
+		<p class="text-muted small text-center mb-4">Formulario de confirmación de compra</p>
+
+		<ol>
+			<li>Completar <strong>nombre y apellido</strong>, y la <strong>fecha de pago</strong>.</li>
+			<li>Elegir el <strong>método de entrega</strong>: retirar en el local (gratis) o envío a domicilio (+$50).</li>
+			<li>Si elegiste envío a domicilio, ingresar tu <strong>dirección</strong>.</li>
+			<li>Elegir el <strong>medio de pago</strong> (efectivo, débito o crédito) y apretar <strong>"Confirmar"</strong>.</li>
+		</ol>
+
+		<div class="alert alert-success mb-0">
+			Al confirmar, la página muestra una alerta con el detalle de subtotal, descuento (si aplica), IVA,
+			costo de envío (si corresponde) y total a pagar. El carrito se vacía automáticamente.
+		</div>
+	</div>
+
+	<!-- SECCIÓN ADMINISTRADOR -->
+	<div class="card shadow-sm p-4 mb-4">
+		<h2 id="manual-administrador" class="h4 mb-3">Sección administrador</h2>
+		<p>Desde la página principal, el botón <strong>"Admin"</strong> (arriba a la izquierda) lleva a la pantalla
+		de inicio de sesión, donde hay que ingresar usuario y contraseña.</p>
+
+		<img src="imgmanual/login.jpg" class="img-fluid rounded-3 shadow-sm my-3" alt="Página de inicio de sesión del administrador">
+		<p class="text-muted small text-center mb-4">Inicio de sesión del administrador</p>
+
+		<div class="alert alert-danger">
+			Si el usuario o la contraseña son incorrectos, aparece una alerta avisando "usuario o contraseña incorrectos".
+		</div>
+
+		<img src="imgmanual/paneladmin.jpg" class="img-fluid rounded-3 shadow-sm my-3" alt="Panel de gestión del administrador">
+		<p class="text-muted small text-center mb-4">Panel de gestión del administrador</p>
+
+		<h3 class="h6 fw-bold">Registrar un producto nuevo</h3>
+		<p>Con el botón <strong>"Registrar +"</strong> se abre un formulario para cargar: nombre, sección (Mujeres,
+		Hombres o Chicos), precio, stock, y la <strong>URL de una imagen</strong> — se pega el enlace directo de una
+		foto de internet (por ejemplo, copiado desde Google Imágenes). Al guardar, el producto aparece al instante
+		tanto en la tienda como en este panel.</p>
+
+		<img src="imgmanual/agregarproducto.jpg" class="img-fluid rounded-3 shadow-sm my-3" alt="Formulario para registrar un producto nuevo">
+		<p class="text-muted small text-center mb-4">Formulario de alta de productos</p>
+
+		<div class="alert alert-warning">
+			Si falta completar algún campo, o la imagen no es un link válido (tiene que empezar con
+			<code>http://</code> o <code>https://</code>), la página avisa con una alerta y no guarda el producto.
+		</div>
+
+		<h3 class="h6 fw-bold">Actualizar stock y eliminar productos</h3>
+		<p>Cada producto registrado se puede editar o quitar directamente desde este panel:</p>
+		<ul>
+			<li>Escribiendo un número nuevo y apretando <strong>"Cargar"</strong>, se actualiza el stock al instante
+			(se ve reflejado enseguida en la tienda).</li>
+			<li>El botón <strong>"Eliminar producto"</strong> lo saca por completo del catálogo.
+			<strong class="text-danger">Esta acción no se puede deshacer.</strong></li>
+		</ul>
+
+		<img src="imgmanual/editarproducto.jpg" class="img-fluid rounded-3 shadow-sm my-3" alt="Edición de stock y eliminación de productos">
+		<p class="text-muted small text-center mb-4">Edición de stock y eliminación de productos</p>
+
+		<h3 class="h6 fw-bold">Historial de ventas</h3>
+		<p>Más abajo en el mismo panel, el administrador puede ver el detalle de cada venta confirmada: cliente,
+		fecha y hora, método de pago, método de entrega, productos comprados, y el desglose de subtotal, descuento,
+		IVA, costo de envío y total. El botón <strong>"Limpiar historial de ventas"</strong> borra todo el registro.</p>
+
+		<img src="imgmanual/historialventas.jpg" class="img-fluid rounded-3 shadow-sm my-3" alt="Historial de ventas del administrador">
+		<p class="text-muted small text-center mb-0">Historial de ventas</p>
+	</div>
+
+	<div class="text-center mb-4">
+		<a href="../index.html" class="btn btn-primary btn-lg">← Volver a la tienda</a>
+	</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,131 +1,95 @@
-
-
 function realizarCompra(){
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
- if(carrito.length === 0){
- alert("El carrito está vacío");
- return;
- }
+    if(carrito.length === 0){
+        alert("El carrito está vacío");
+        return;
+    }
 
-let nombre = document.getElementById("nombreUsuario").value;
-let fecha = document.getElementById("fechaDePago").value;
-let metodoPago = document.getElementById("metodoDePago").value;
-let entregaDelivery = document.getElementById("entregaDelivery").checked;
+    let nombre = document.getElementById("nombreUsuario").value.trim();
+    let fecha = document.getElementById("fechaDePago").value;
+    let metodoPago = document.getElementById("metodoDePago").value;
+    let entregaRetiro = document.getElementById("entregaRetiro").checked;
+    let entregaDelivery = document.getElementById("entregaDelivery").checked;
 
-  if(nombre === "" || fecha === ""){
-   alert("Por favor completá todos los campos");
-   return;
-  }
-  
-  if(entregaDelivery && document.getElementById("domicilio").value === ""){
-    alert("Por favor ingresá tu domicilio");
-    return;
-}
+    if(nombre === "" || fecha === ""){
+        alert("Por favor completá todos los campos");
+        return;
+    }
 
-if(metodoPago === ""){
-    alert("Por favor seleccioná un método de pago");
-    return;
-}
-  
-  let productos = JSON.parse(localStorage.getItem("productos")) || [];
-  
- for(let i = 0; i < carrito.length; i++){
-	
-	let productoCarrito = carrito[i];
-	let producto = null;
     
-	for(let j = 0; j < productos.length; j++){
-    if(productos[j].nombre === productoCarrito.nombre){
-        producto = productos[j];
+    if(!entregaRetiro && !entregaDelivery){
+        alert("Por favor elegí un método de entrega");
+        return;
     }
-}
 
-	if(!producto){
-      alert("El producto " + productoCarrito.nombre + " ya no está disponible");
-      return;
-     }
-    if(productoCarrito.cantidad > producto.stock){
-      alert("No hay suficiente stock de " + productoCarrito.nombre);
-      return;
+    if(entregaDelivery && document.getElementById("domicilio").value.trim() === ""){
+        alert("Por favor ingresá tu domicilio");
+        return;
     }
-}
 
+    if(metodoPago === ""){
+        alert("Por favor seleccioná un método de pago");
+        return;
+    }
 
-for(let i = 0; i < carrito.length; i++){
-    let productoCarrito = carrito[i];
-    let producto = null;
+    let productos = JSON.parse(localStorage.getItem("productos")) || [];
 
-    for(let j = 0; j < productos.length; j++){
-        if(productos[j].nombre === productoCarrito.nombre){
-            producto = productos[j];
+   
+    for(let i = 0; i < carrito.length; i++){
+        let productoCarrito = carrito[i];
+        let producto = productos.find(function(p){ return p.id === productoCarrito.id; });
+
+        if(!producto){
+            alert("El producto " + productoCarrito.nombre + " ya no está disponible");
+            return;
         }
     }
 
-    producto.stock =  producto.stock - productoCarrito.cantidad;
-}
+   
+    let totales = calcularTotalesCarrito(carrito, metodoPago);
+    let costoDelivery = entregaDelivery ? costoFijoDelivery : 0;
+    let total = totales.totalSinDelivery + costoDelivery;
 
-localStorage.setItem("productos", JSON.stringify(productos));
+    let mensajeCompra = "Subtotal: $" + totales.subtotal.toFixed(2) + ". ";
+
+    if(totales.esDebito){
+        mensajeCompra += "Descuento débito (10%): -$" + totales.descuento.toFixed(2) + ". ";
+    }
+
+    mensajeCompra += "IVA (22%): $" + totales.iva.toFixed(2) + ". ";
+
+    if(entregaDelivery){
+        mensajeCompra += "Costo de delivery: $" + costoDelivery.toFixed(2) + ". ";
+    }
+
+    mensajeCompra += "Total a pagar: $" + total.toFixed(2);
+
+    let venta = {
+        nombre: nombre,
+        fecha: fecha,
+        hora: new Date().toLocaleTimeString(),
+        metodoPago: metodoPago,
+        metodoEntrega: entregaDelivery ? "delivery" : "retiro",
+        domicilio: entregaDelivery ? document.getElementById("domicilio").value.trim() : null,
+        productos: carrito,
+        subtotal: totales.subtotal,
+        descuento: totales.descuento,
+        iva: totales.iva,
+        costoDelivery: costoDelivery,
+        total: total
+    };
+
+    let ventasRealizadas = JSON.parse(localStorage.getItem("ventasRealizadas")) || [];
+    ventasRealizadas.push(venta);
+    localStorage.setItem("ventasRealizadas", JSON.stringify(ventasRealizadas));
 
 
+    localStorage.setItem("totalGastado", 0);
 
-let totalSinIva = 0;
-	
- for(let i = 0; i < carrito.length; i++){
- totalSinIva = totalSinIva + (carrito[i].cantidad * carrito[i].precio);
- }
-
- let porcentajeIva = 0.22;
  
-if(metodoPago === "debito"){
-porcentajeIva = 0.20;
-}
+    localStorage.removeItem("carrito");
 
-let montoIva = totalSinIva * porcentajeIva;
-let totalConIva = totalSinIva + montoIva;
-
-let costoDelivery = 0;
-
- if(entregaDelivery){
-  costoDelivery = 50;
-  totalConIva = totalConIva + costoDelivery;
-}
-
-let total = totalConIva;
-
-let mensajeIva = "Precio sin IVA: $" + totalSinIva + "  ";	
-mensajeIva += "IVA (" + (porcentajeIva * 100) + "%): $ " + montoIva + " " ;
-	
-if(entregaDelivery){
-   mensajeIva += "Costo de delivery: $" + costoDelivery;
- }
-mensajeIva += " Total a pagar: $" + total;
-
-
-let venta = {
-  nombre: nombre,
-  fecha: fecha,
-  hora: new Date().toLocaleTimeString(),
-  metodoPago: metodoPago,
-  productos: carrito,
-  totalSinIva: totalSinIva,
-  montoIva: montoIva,
-  costoDelivery: costoDelivery,
-  total: total
-};
-
-let ventasRealizadas = JSON.parse(localStorage.getItem("ventasRealizadas")) || [];
- ventasRealizadas.push(venta);
- 
- localStorage.setItem("ventasRealizadas", JSON.stringify(ventasRealizadas));
-
- let totalAcumulado = Number(localStorage.getItem("totalGastado")) || 0;
-   totalAcumulado = totalAcumulado + total;
- 
- localStorage.setItem("totalGastado", totalAcumulado);
- localStorage.removeItem("carrito");
- 
-
-  alert("Compra confirmada! " + mensajeIva);
+    alert("¡Compra confirmada! " + mensajeCompra);
     window.location.href = "../index.html";
 }

@@ -1,0 +1,26 @@
+/* El estilo pricipal se lo doy con Boostrap */
+
+
+:root {
+    --bs-primary: #1e56c4;
+    --bs-primary-rgb: 30, 86, 196;
+}
+
+/* index.js, carrito.js y gestionAdmin.js. */
+.tarjeta-producto {
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.tarjeta-producto img {
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-producto:hover img {
+    transform: scale(1.05);
+}

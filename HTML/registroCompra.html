@@ -3,62 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<a href="carrito.html" class="volver">← Volver al carrito</a>
-<link rel="stylesheet" href="../style.css">
 <title>FashionShop - Confirmar compra</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
 </head>
-<body style="background-color: whitesmoke;">
 
+<body class="bg-light">
 
-<h1>Confirma tu compra</h1>
+<header class="bg-dark text-white py-4 mb-4">
+	<div class="container d-flex justify-content-between align-items-center">
+		<a href="carrito.html" class="btn btn-outline-light btn-sm">← Volver al carrito</a>
+		<h1 class="h3 mb-0">Confirmá tu compra</h1>
+		<span style="width: 160px;"></span> 
+	</div>
+</header>
 
+<div class="container mb-5" style="max-width: 600px;">
+<div class="card shadow-sm p-4">
 
-<h2>Ingresa tus datos</h2>
+	<h2 class="h5 mb-3">Tus datos</h2>
 
-<div>
-	<section class="registroComprador">
-	<label for="nombreUsuario">Nombre y apellido:</label>
-	<input type="text" id="nombreUsuario" placeholder="Ej: Pedro Rodriguez" required><br><br>
-	
-	<label for="fechaDePago">Fecha de pago:</label>
-   <input id="fechaDePago" type="date" required>
-	<br>
+	<div class="mb-3">
+		<label for="nombreUsuario" class="form-label">Nombre y apellido</label>
+		<input type="text" id="nombreUsuario" class="form-control" placeholder="Ej: Pedro Rodríguez" required>
+	</div>
 
-	 
-   
-   </div>
-	
-<h3>Método de entrega</h3>
+	<div class="mb-4">
+		<label for="fechaDePago" class="form-label">Fecha de pago</label>
+		<input id="fechaDePago" type="date" class="form-control" required>
+	</div>
 
-<div>
-	<section class="entregaRetiro">
-	<label for="entregaRetiro">Retirar en el local <strong style="color:green">GRATIS</strong></label>
-	<input type="radio" id="entregaRetiro">
-	<p>Franklin D. Roosevelt 458, 70000 Colonia del Sacramento, Departamento de Colonia</p>
-	</section><br>
+	<h2 class="h5 mb-3">Método de entrega</h2>
 
-	<section class="entregaDelivery">
-	<label for="entregaDelivery">Enviar a domicilio <strong>+ $50</strong></label>
-	<input type="radio" id="entregaDelivery"><br><br>
-	<input type="text" id="domicilio" name="domicilio" placeholder="ingresa tu direccion"><br><br>
-	
-		<section class="metodoDePago">
-		<label for="metodoDePago">Medio de Pago:</label><br>
-		<select id="metodoDePago" name="metodoDePago">
-        <option value="">-- Selecciona una opción --</option>
-        <option value="efectivo">Efectivo</option>
-        <option value="debito">Tarjeta de Débito (Aplica descuento IVA del 2%)</option>
-        <option value="credito">Tarjeta de Crédito</option>
+	<div class="mb-4">
+		<div class="form-check mb-2">
+			<input class="form-check-input" type="radio" name="entrega" id="entregaRetiro">
+			<label class="form-check-label" for="entregaRetiro">
+				Retirar en el local <strong class="text-success">GRATIS</strong>
+			</label>
+			<p class="text-muted small mb-0 mt-1">Franklin D. Roosevelt 458, 70000 Colonia del Sacramento, Departamento de Colonia</p>
+		</div>
+
+		<div class="form-check mb-2">
+			<input class="form-check-input" type="radio" name="entrega" id="entregaDelivery">
+			<label class="form-check-label" for="entregaDelivery">
+				Enviar a domicilio <strong>+ $50</strong>
+			</label>
+		</div>
+
+		<input type="text" id="domicilio" name="domicilio" class="form-control mt-2" placeholder="Ingresá tu dirección">
+	</div>
+
+	<h2 class="h5 mb-3">Medio de pago</h2>
+
+	<div class="mb-4">
+		<label for="metodoDePago" class="form-label">Elegí cómo vas a pagar</label>
+		<select id="metodoDePago" name="metodoDePago" class="form-select">
+			<option value="">-- Seleccioná una opción --</option>
+			<option value="efectivo">Efectivo</option>
+			<option value="debito">Tarjeta de Débito (10% de descuento)</option>
+			<option value="credito">Tarjeta de Crédito</option>
 		</select>
-		</section>
-			
-	</section><br>
-	
-	<button type="button" onclick="realizarCompra()">CONFIRMAR</button>
-	
+	</div>
+
+	<button type="button" class="btn btn-success w-100" onclick="realizarCompra()">Confirmar</button>
+
+</div>
 </div>
 
-
- <script src="../scripts/registroCompra.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../scripts/calculosCarrito.js"></script>
+<script src="../scripts/registroCompra.js"></script>
 </body>
 </html>

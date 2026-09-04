@@ -1,25 +1,24 @@
-
-let admin= {
-
-usuario:"admin",
-password:"admin"
-
+let admin = {
+    usuario: "admin",
+    password: "admin"
 };
 
+function intentarLogin(){
+    let usuarioIngresado = document.getElementById("usuario").value;
+    let passwordIngresada = document.getElementById("password").value;
 
+    if(usuarioIngresado === admin.usuario && passwordIngresada === admin.password){
+        window.location.href = "gestionAdmin.html";
+    } else {
+        alert("Usuario o contraseña incorrectos");
+    }
+}
 
-document.getElementById("login").addEventListener("click", function(e){
+document.getElementById("login").addEventListener("click", intentarLogin);
 
-	let usuarioIngresado=document.getElementById("usuario").value;
-	let passwordIngresada=document.getElementById("password").value
-
-
-	if(usuarioIngresado === admin.usuario && passwordIngresada === admin.password){
-		window.location.href="gestionAdmin.html"
-	}else{
-		alert("usuario o contrasena incorrectos");
-	}
-	
+document.getElementById("password").addEventListener("keydown", function(evento){
+    if(evento.key === "Enter"){
+        intentarLogin();
+    }
 });
-
 
